@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品模块</title>
+    <script src="vue3.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: rgb(235, 231, 231);
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #phonelist {
+            width: 1340px;
+        }
+
+        #head {
+            position: relative;
+            height: 58px;
+            display: block;
+        }
+
+        #head>h2 {
+            font-size: 1.5em;
+            margin: 0.83em 0;
+        }
+
+        #more a {
+            position: absolute;
+            color: #757575;
+            cursor: pointer;
+            text-decoration: none;
+            line-height: 32px;
+            top: 0;
+            right: 0;
+        }
+
+        #left img {
+            float: left;
+            width: 280px;
+            height: 754px;
+
+        }
+
+        #right ul li {
+            position: relative;
+            z-index: 1;
+            float: right;
+            width: 250px;
+            height: 370px;
+            margin-left: 14px;
+            margin-bottom: 14px;
+            background: #fff;
+        }
+
+        #name {
+            font-size: 14px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        #pdesc {
+            margin: 0 10px 10px;
+            height: 18px;
+            font-size: 12px;
+            text-align: center;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #b0b0b0;
+        }
+
+        #price {
+            text-align: center;
+            color: #ff6700;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <template id="phonedesc">
+        <div id="phonelist">
+            <div id="head">
+                <h2>手机</h2>
+                <div id="more">
+                    <a href="#">查看更多</a>
+                </div>
+            </div>
+            <div id="left">
+                <img src="images/ad1.png" alt="">
+            </div>
+            <div id="right">
+                <ul v-for="(phone,pid) in phones" :key="pid">
+                    <li>
+                        <img :src="phone.prc" alt="">
+                        <p id="name">{{phone.pname}}</p>
+                        <p id="pdesc">{{phone.pdesc}}</p>
+                        <p id="price">{{phone.price}}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </template>
+
+
+</body>
+<script>
+    const app = Vue.createApp({
+        template: '#phonedesc',
+        data() {
+            return {
+                phones: [
+                    { pid: 1, pname: "Redmi K50电竞版", pdesc: "全线拉满的冷血旗舰", price: "3299元起", prc: "images/phone1.png" },
+                    { pid: 2, pname: "Xiaomi 12 Pro", pdesc: "全新晓龙8 | 2K AMOLED屏幕", price: "4699元起", prc: "images/phone2.png" },
+                    { pid: 3, pname: "Xiaomi 12", pdesc: "全新晓龙8 | 5000万主摄", price: "3699元起", prc: "images/phone3.png" },
+                    { pid: 4, pname: "Xiaomi 12X", pdesc: "晓龙870 | 5000万主摄", price: "2999元起", prc: "images/phone4.png" },
+                    { pid: 5, pname: "Xiaomi 11 青春活力版", pdesc: "轻薄5G，内外皆出彩", price: "1899元起", prc: "images/phone5.png" },
+                    { pid: 6, pname: "Redmi Note 11Pro系列", pdesc: "三星AMOLED高刷频", price: "1799元起", prc: "images/phone6.png" },
+                    { pid: 7, pname: "Redmi Note 11 5G", pdesc: "5000mAh大电量", price: "1199元起", prc: "images/phone7.png" },
+                    { pid: 8, pname: "Redmi Note 11 4G", pdesc: "5000mAh大电量", price: "969元起", prc: "images/phone8.png" },
+
+                ]
+            }
+        }
+    })
+    app.mount('#app')
+</script>
+
+</html>
